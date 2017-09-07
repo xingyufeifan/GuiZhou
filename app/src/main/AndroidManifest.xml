@@ -37,78 +37,82 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.alibaba.app.appkey"
+            android:value="24617043" />
+        <meta-data
+            android:name="com.alibaba.app.appsecret"
+            android:value="d751a1236a17e4f10ac8ddbc72634531" />
+        <service android:name="com.nandi.bdmap.anychat.MyService"
+            android:enabled="true"/>
+        <!-- 通道保持服务 -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <service
+            android:name="com.alibaba.sdk.android.push.ChannelService"
+            android:exported="true"
+            android:process=":channel" >
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.SERVICE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.PING_V4" />
+
+                <category android:name="taobao" />
+            </intent-filter>
+        </service>
+
+        <!-- 消息接收服务 -->
+        <service
+            android:name="com.alibaba.sdk.android.push.MsgService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.RECEIVE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.alibaba.sdk.android.push.NOTIFY_ACTION" />
+            </intent-filter>
+        </service>
+
+        <!-- 连接心跳保持监听器 -->
+        <receiver android:name="anet.channel.heartbeat.HeartbeatManager$Receiver" >
+            <intent-filter>
+                <action android:name="anetwork.channel.intent.action.COMMAND" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.nandi.bdmap.anychat.MyReceiver" >
+            <intent-filter>
+                <action android:name="com.fubangty.action.NOTIFICATION_OPENED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.fubangty.action.NOTIFICATION_REMOVED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.COMMAND" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.taobao.taobao.intent.action.COMMAND" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RECEIVE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
     </application>
-    <meta-data
-        android:name="com.alibaba.app.appkey"
-        android:value="24617043" />
-    <meta-data
-        android:name="com.alibaba.app.appsecret"
-        android:value="d751a1236a17e4f10ac8ddbc72634531" />
-
-    <service android:name="com.nandi.bdmap.anychat.MyService"
-        android:enabled="true"/>
-    <!-- 通道保持服务 -->
-    <service
-        android:name="com.alibaba.sdk.android.push.ChannelService"
-        android:exported="true"
-        android:process=":channel" >
-        <intent-filter>
-            <action android:name="com.taobao.accs.intent.action.SERVICE" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="org.agoo.android.intent.action.PING_V4" />
-
-            <category android:name="taobao" />
-        </intent-filter>
-    </service>
-
-    <!-- 消息接收服务 -->
-    <service
-        android:name="com.alibaba.sdk.android.push.MsgService"
-        android:exported="false" >
-        <intent-filter>
-            <action android:name="com.taobao.accs.intent.action.RECEIVE" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="com.alibaba.sdk.android.push.NOTIFY_ACTION" />
-        </intent-filter>
-    </service>
-
-    <!-- 连接心跳保持监听器 -->
-    <receiver android:name="anet.channel.heartbeat.HeartbeatManager$Receiver" >
-        <intent-filter>
-            <action android:name="anetwork.channel.intent.action.COMMAND" />
-        </intent-filter>
-    </receiver>
-    <receiver android:name="com.nandi.bdmap.anychat.MyReceiver" >
-        <intent-filter>
-            <action android:name="com.fubangty.action.NOTIFICATION_OPENED" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="com.fubangty.action.NOTIFICATION_REMOVED" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="com.taobao.accs.intent.action.COMMAND" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="com.taobao.taobao.intent.action.COMMAND" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="org.agoo.android.intent.action.RECEIVE" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="android.intent.action.USER_PRESENT" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED" />
-        </intent-filter>
-        <intent-filter>
-            <action android:name="android.intent.action.PACKAGE_REMOVED" />
-
-            <data android:scheme="package" />
-        </intent-filter>
-    </receiver>
+   
 </manifest>
