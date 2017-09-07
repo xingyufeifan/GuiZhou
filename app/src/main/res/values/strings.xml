@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">贵州指挥系统</string>
     <string name="location_permission_denied">Open Mobile Map Package could not open because WRITE permission was denied.</string>
-    <string name="config.data.sdcard.offline.dir">ArcGIS/samples/MapPackage</string>
-    <string name="config.mmpk.name">Yellowstone</string>
+    <string name="config.data.sdcard.offline.dir">ArcGis/simples/MapPackage</string>
+    <string name="config.mmpk.name">streetmap_SD</string>
 </resources>

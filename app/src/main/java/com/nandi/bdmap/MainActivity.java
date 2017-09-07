@@ -11,15 +11,27 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.esri.arcgisruntime.data.TileCache;
+import com.esri.arcgisruntime.geometry.Point;
+import com.esri.arcgisruntime.geometry.SpatialReference;
+import com.esri.arcgisruntime.layers.ArcGISMapImageLayer;
+import com.esri.arcgisruntime.layers.ArcGISTiledLayer;
+import com.esri.arcgisruntime.layers.MobileBasemapLayer;
 import com.esri.arcgisruntime.loadable.LoadStatus;
+import com.esri.arcgisruntime.mapping.ArcGISMap;
+import com.esri.arcgisruntime.mapping.Basemap;
+import com.esri.arcgisruntime.mapping.Item;
 import com.esri.arcgisruntime.mapping.MobileMapPackage;
+import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.MapView;
+import com.esri.arcgisruntime.portal.Portal;
+import com.esri.arcgisruntime.portal.PortalItem;
 
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MMPK";
-    private static final String FILE_EXTENSION = ".mmpk";
+    private static final String FILE_EXTENSION = ".tpk";
     private static File extStorDir;
     private static String extSDCardDirName;
     private static String filename;
@@ -85,27 +97,20 @@ public class MainActivity extends AppCompatActivity {
      * @param mmpkFile Full path to mmpk file
      */
     private void loadMobileMapPackage(String mmpkFile){
-        //[DocRef: Name=Open Mobile Map Package-android, Category=Work with maps, Topic=Create an offline map]
-        // create the mobile map package
-        mapPackage = new MobileMapPackage(mmpkFile);
-        // load the mobile map package asynchronously
-        mapPackage.loadAsync();
-
-        // add done listener which will invoke when mobile map package has loaded
-        mapPackage.addDoneLoadingListener(new Runnable() {
+        TileCache tileCache=new TileCache(mmpkFile);
+        ArcGISTiledLayer tiledLayer = new ArcGISTiledLayer(tileCache);
+        ArcGISMap arcGISMap = new ArcGISMap();
+        arcGISMap.getOperationalLayers().add(tiledLayer);
+        mMapView.setMap(arcGISMap);
+        arcGISMap.addDoneLoadingListener(new Runnable() {
             @Override
             public void run() {
-                // check load status and that the mobile map package has maps
-                if(mapPackage.getLoadStatus() == LoadStatus.LOADED && mapPackage.getMaps().size() > 0){
-                    // add the map from the mobile map package to the MapView
-                    mMapView.setMap(mapPackage.getMaps().get(0));
-                }else{
-                    // Log an issue if the mobile map package fails to load
-                    Log.e(TAG, mapPackage.getLoadError().getMessage());
-                }
+                Point p = new Point(-117.162040, 32.718260, SpatialReference.create(4326));
+                Viewpoint vp = new Viewpoint(p, 10000);
+                mMapView.setViewpointAsync(vp, 3);
             }
         });
-        //[DocRef: END]
+
     }
 
     @Override
