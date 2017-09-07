@@ -2,21 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nandi.bdmap">
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-    <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- 这个权限用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 用于读取手机当前的状态 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 访问网络，网络定位需要上网 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -35,5 +38,77 @@
             </intent-filter>
         </activity>
     </application>
+    <meta-data
+        android:name="com.alibaba.app.appkey"
+        android:value="24617043" />
+    <meta-data
+        android:name="com.alibaba.app.appsecret"
+        android:value="d751a1236a17e4f10ac8ddbc72634531" />
 
+    <service android:name="com.nandi.bdmap.anychat.MyService"
+        android:enabled="true"/>
+    <!-- 通道保持服务 -->
+    <service
+        android:name="com.alibaba.sdk.android.push.ChannelService"
+        android:exported="true"
+        android:process=":channel" >
+        <intent-filter>
+            <action android:name="com.taobao.accs.intent.action.SERVICE" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="org.agoo.android.intent.action.PING_V4" />
+
+            <category android:name="taobao" />
+        </intent-filter>
+    </service>
+
+    <!-- 消息接收服务 -->
+    <service
+        android:name="com.alibaba.sdk.android.push.MsgService"
+        android:exported="false" >
+        <intent-filter>
+            <action android:name="com.taobao.accs.intent.action.RECEIVE" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="com.alibaba.sdk.android.push.NOTIFY_ACTION" />
+        </intent-filter>
+    </service>
+
+    <!-- 连接心跳保持监听器 -->
+    <receiver android:name="anet.channel.heartbeat.HeartbeatManager$Receiver" >
+        <intent-filter>
+            <action android:name="anetwork.channel.intent.action.COMMAND" />
+        </intent-filter>
+    </receiver>
+    <receiver android:name="com.nandi.bdmap.anychat.MyReceiver" >
+        <intent-filter>
+            <action android:name="com.fubangty.action.NOTIFICATION_OPENED" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="com.fubangty.action.NOTIFICATION_REMOVED" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="com.taobao.accs.intent.action.COMMAND" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="com.taobao.taobao.intent.action.COMMAND" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="org.agoo.android.intent.action.RECEIVE" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.USER_PRESENT" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+            <data android:scheme="package" />
+        </intent-filter>
+    </receiver>
 </manifest>

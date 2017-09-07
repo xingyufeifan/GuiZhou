@@ -3,4 +3,84 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="text_workbench">#2caeaa</color>
+    <color name="green">#2caeaa</color>
+    <color name="greenish">#95ece8</color>
+    <color name="gray">#707070</color>
+    <color name="fab_menu">#2caeaa</color>
+    <color name="fab">#E9E9E9</color>
+    <color name="relic_text_color">#2caeaa</color>
+    <color name="relic_text_edit_color">#2caeaa</color>
+
+
+
+    <color name="activity_bg_color">#fffafafa</color>
+    <color name="top_category_bar_background">#ffeeeeee</color>
+    <color name="divider">#ffdddddd</color>
+    <color name="category_tab_text">#ff707070</color>
+    <color name="category_tab_text_dark">#fffafafa</color>
+    <color name="category_tab_highlight_text">#fffafafa</color>
+    <color name="category_tab_highlight_text_dark">#ffd43d3d</color>
+    <color name="category_tab_highlight_bg">#95ece8</color>
+    <color name="category_tab_highlight_dark_bg">#fffafafa</color>
+
+    <color name="color_999999">#999999</color>
+    <color name="color_eeeeee">#eeeeee</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="color_button">#2caeaa</color>
+    <color name="color_c61a04">#c61a04</color>
+    <color name="color_cccccc">#cccccc</color>
+    <color name="color_d81e06">#d81e06</color>
+    <color name="color_b0b8b2">#b0b8b2</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_fe9571">#fe9571</color>
+
+    <!-- TabLayout -->
+    <color name="main_color">#6FBCBA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="tab_indicator">#d6d6d6</color>
+    <color name="tab_tv_normal">#999999</color>
+    <color name="tab_tv_selected">#45c01a</color>
+    <color name="tab_bg">#fcfcfc</color>
+    <color name="tab_div">#d6d6d6</color>
+    <color name="grey">#363636</color>
+    <color name="dark_grey">#282828</color>
+    <color name="trans_dark_grey">#80282828</color>
+    <color name="trans_white">#20ffffff</color>
+    <color name="trans">#00000000</color>
+    <color name="blue">#cc33b5e5</color>
+
+    <!-- 蓝色 -->
+    <color name="blue1">#6699ff</color>
+    <!-- 带点透明度蓝色 -->
+    <color name="blue2">#5B6699ff</color>
+    <!-- 白色 -->
+    <color name="white3">#8aFFFFFF</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <!-- 红色 -->
+    <color name="red">#CF2A27</color>
+
+    <!-- 灰色 -->
+    <color name="gray1">#808080</color>
+    <color name="gray3">#c6c6c6</color>
+    <color name="gray4">#EEEEEE</color>
+    <!-- 浅灰色 -->
+    <color name="gray2">#BBBFC6</color>
+    <!-- 半透明灰色  -->
+    <color name="gray5">#88000000</color>
+    <color name="gray6">#CDC1C5</color>
+
+    <!-- 浅红色 -->
+    <color name="red1">#FF43FF</color>
+    <!-- 整个title的颜色 -->
+    <color name="titlecolor">#29BFA5</color>
+
+    <!-- 上传图片添加的颜色 -->
+    <color name="none_color">#00000000</color>
+    <color name="albumback">#E1E0DE</color>
+    <color name="plugin_camera_black">#000000</color>
+    <!-- 蓝色 -->
+    <color name="blue3">#29BFA5</color>
 </resources>
