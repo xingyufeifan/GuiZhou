@@ -24,7 +24,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initCloudChannel(this);
+//        initCloudChannel(this);
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new LoggerInterceptor("Disaster"))
                 .connectTimeout(10, TimeUnit.SECONDS)

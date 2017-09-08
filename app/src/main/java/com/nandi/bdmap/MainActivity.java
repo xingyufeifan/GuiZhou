@@ -1,6 +1,7 @@
 package com.nandi.bdmap;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent=  new Intent(this,BNMainActivity.class);
+        startActivity(intent);
         // get sdcard resource name
         extStorDir = Environment.getExternalStorageDirectory();
         // get the directory
